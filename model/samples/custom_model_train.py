@@ -18,6 +18,7 @@ from torch import nn
 from torch.utils.data import Dataset
 
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, DataCollatorWithPadding, BertModel
+from transformers import AutoConfig, PreTrainedModel
 from transformers.modeling_outputs import SequenceClassifierOutput
 from transformers import TrainingArguments, Trainer
 
@@ -37,12 +38,12 @@ def preprocess_function(examples):
 def parse_arguments() :
 
     parser = argparse.ArgumentParser(description='Argparse')
-    parser.add_argument('--model_name', type=str, default="google-bert/bert-base-uncased")
+    parser.add_argument('--model_name', type=str, default="./output_custom/checkpoint-24/")
     parser.add_argument('--data_dir', type=str, default="./data/final_features.csv")
     parser.add_argument('--output_dir', type=str, default="./output_custom")
     parser.add_argument('--dev_ratio', type=float, default=0.2)
     parser.add_argument('--save_total_limit', type=int, default=5)
-    parser.add_argument('--eval_steps', type=int, default=12)
+    parser.add_argument('--eval_steps', type=int, default=6)
     parser.add_argument('--epoch', type=int, default=2)
     parser.add_argument('--lr', type=float, default=3e-5)
     parser.add_argument('--batch_size', type=int, default=16)
@@ -84,10 +85,11 @@ class DaicWozDataset(Dataset):
     def __len__(self):
         return len(self.labels)
 
+class CustomModel(PreTrainedModel) :
 
-class CustomModel(nn.Module) :
-    def __init__(self, model_name, linear_size, num_labels, addi_feat_size) :
-        super(CustomModel, self).__init__()
+    def __init__(self, config, model_name, linear_size, num_labels, addi_feat_size) :
+        super().__init__(config)
+
         self.num_labels = num_labels
         self.bert = BertModel.from_pretrained(model_name)
         
@@ -97,7 +99,6 @@ class CustomModel(nn.Module) :
         self.fc = nn.Linear((768 + addi_feat_size), linear_size) # warning : 모델이 변경될 경우 768이 아니라 모델 최종 output size로 직접 바꿔줘야 함
         self.dropout2 = nn.Dropout(0.8)
         self.classifier = nn.Linear(linear_size, num_labels)
-        self.sigmoid = nn.Sigmoid()
 
     def forward(self, input_ids, attention_mask, addi_feat, labels):
         
@@ -117,15 +118,14 @@ class CustomModel(nn.Module) :
         x = self.fc(x)
         x = self.dropout2(x)
         x = self.classifier(x)
-        logits = self.sigmoid(x)
+        # print(x)
+        logits = torch.nn.functional.softmax(x, dim=1)
 
         # print(logits)
         # print(labels)
 
         loss_fct = nn.CrossEntropyLoss()
         loss = loss_fct(logits.view(-1, self.num_labels), torch.Tensor(labels).long().view(-1))
-
-        print(loss)
 
         return SequenceClassifierOutput(
             loss=loss,
@@ -135,7 +135,7 @@ class CustomModel(nn.Module) :
         )
     
     def concat_features(self, x, addi_feat) :
-        addi_feat = torch.log(torch.Tensor(addi_feat))
+        addi_feat = torch.log(torch.abs(torch.Tensor(addi_feat + 1)))
         return torch.cat((x, addi_feat), dim=1)
 
     def freeze_bert(self):
@@ -145,7 +145,6 @@ class CustomModel(nn.Module) :
     def unfreeze_bert(self):
         for param in self.bert.named_parameters():
             param[1].requires_grad=True
-
 
 if __name__ == "__main__" :
 
@@ -166,7 +165,8 @@ if __name__ == "__main__" :
     tokenizer = AutoTokenizer.from_pretrained(args.model_name)
     # data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
 
-    model_custom = CustomModel(args.model_name, 256, 2, 88).to(DEVICE) # warning : 88개로 선언했으니 그만큼 들어가야 함
+    config = AutoConfig.from_pretrained(args.model_name)
+    model_custom = CustomModel(config, args.model_name, 256, 2, 88).to(DEVICE) # warning : 88개로 선언했으니 그만큼 들어가야 함
     # print(model_custom)
     
     # 데이터셋 생성
@@ -220,3 +220,4 @@ if __name__ == "__main__" :
     )
 
     trainer.train()
+    model_custom.save_pretrained("./best_model")
