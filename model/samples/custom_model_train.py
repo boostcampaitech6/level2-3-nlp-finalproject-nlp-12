@@ -135,7 +135,7 @@ class CustomModel(nn.Module) :
         )
     
     def concat_features(self, x, addi_feat) :
-        addi_feat = torch.Tensor(addi_feat)
+        addi_feat = torch.log(torch.Tensor(addi_feat))
         return torch.cat((x, addi_feat), dim=1)
 
     def freeze_bert(self):
