@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <!-- 폰트 선언 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- 스타일 선언 -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- 제목 -->
+    <title>우울증 테스트</title>
+
+</head>
+<body>
+    <!-- 상단 -->
+    <header class="top">
+        <a href="#" onclick="redirectToMain()" class="link">메인 페이지로</a>
+        <div class="circle"></div>
+        <a href="#" class="link2">메인 페이지로</a>
+    </header>
+    
+    <!-- 중앙 -->
+    <section class="mid">
+        
+        <div class="numbering">
+            <p>5</p>
+        </div>
+
+        <div class="question">
+            <p>사진을 보고 드는 감정에 대해 이야기해주세요.</p>
+        </div>
+
+        <img src="img/negative.png" alt="">
+
+        <div class="recordbtn">
+            <button id="startRecording">녹음 시작</button>
+            <button id="stopRecording" disabled>녹음 종료</button>
+        </div>
+        
+        <audio id="audioPlayback" class="auido_playback" controls></audio>
+
+        <div class="start">
+            <a href="#" onclick="get_result()" class="btn btn-rounded">다음으로</a>
+        </div>
+
+    </section>
+
+    <footer class="footer">
+        <p>개인정보 보호대책</p>
+        <p>NLP Team 12 project from Naver Boostcamp 6th</p>
+        <!-- <div class="footer-cols">
+            <ul>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Inverstor Relations</a></li>
+                <li><a href="#">Ways to Watch</a></li>
+                <li><a href="#">Corp Info</a></li>
+            </ul>
+            <ul>
+                <li><a href="#">Help Centre</a></li>
+                <li><a href="#">Jobs</a></li>
+                <li><a href="#">Terms of use</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+            <ul>
+                <li><a href="#">Account</a></li>
+                <li><a href="#">Redeem Gift Cards</a></li>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Speed Test</a></li>
+            </ul>
+        </div> -->
+    </footer>
+
+    <script src="q5.js"></script>
+
+</body>
+</html>
+
+
+<!-- 이렇게 뼈대는 완성되었다. 이걸 스타일링하는게 CSS의 목적 -->
