@@ -1,0 +1,6 @@
+model/data/
+server/data/
+.env
+__pycache__/
+server/serving/
+test.*
