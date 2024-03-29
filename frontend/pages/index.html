@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <!-- 폰트 선언 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- 스타일 선언 -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- 제목 -->
+    <title>우울증 테스트</title>
+
+</head>
+<body>
+    <!-- 상단 -->
+    <header class="top">
+        <a href="#" onclick="redirectToMain()" class="link">메인 페이지로</a>
+        <div class="circle"></div>
+        <a href="#" class="link2">메인 페이지로</a>
+    </header>
+    
+    <!-- 중앙 -->
+    <section class="mid">
+        
+        <div class="title">
+            <h1>우울증 테스트</h1>
+        </div>
+
+        <div class="desc">
+            <p>5가지 질문으로 우울증을 검사해보세요.</p>
+            <p>목소리를 분석하는 AI가 우울증을 예측합니다.</p>
+        </div>
+
+        <div class="select_meta">
+
+            <input type="number" id="select_age" placeholder="나이를 입력해주세요.">
+
+            <select id="select_gender">
+                <option value="male">남성</option>
+                <option value="female">여성</option>
+            </select>
+
+        </div>
+
+        <div class="start">
+            <a href="#" onclick="Start()" class="btn btn-rounded">시작하기</a>
+        </div>
+
+    </section>
+
+    <footer class="footer">
+        <p>개인정보 보호대책</p>
+        <p>NLP Team 12 project from Naver Boostcamp 6th</p>
+        <!-- <div class="footer-cols">
+            <ul>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Inverstor Relations</a></li>
+                <li><a href="#">Ways to Watch</a></li>
+                <li><a href="#">Corp Info</a></li>
+            </ul>
+            <ul>
+                <li><a href="#">Help Centre</a></li>
+                <li><a href="#">Jobs</a></li>
+                <li><a href="#">Terms of use</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+            <ul>
+                <li><a href="#">Account</a></li>
+                <li><a href="#">Redeem Gift Cards</a></li>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Speed Test</a></li>
+            </ul>
+        </div> -->
+    </footer>
+
+    <script src="index.js"></script>
+
+</body>
+</html>
+
+
+<!-- 이렇게 뼈대는 완성되었다. 이걸 스타일링하는게 CSS의 목적 -->

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <!-- 폰트 선언 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- 스타일 선언 -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- 제목 -->
+    <title>우울증 테스트</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+    <!-- 상단 -->
+    <header class="top">
+        <a href="#" onclick="redirectToMain()" class="link">메인 페이지로</a>
+        <div class="circle"></div>
+        <a href="#" class="link2">메인 페이지로</a>
+    </header>
+    
+    <!-- 중앙 -->
+    <section class="mid">
+        
+        <div class="title">
+            <div class="qall_result">
+                <h1><div id="qall_prob"></div></h1> 
+                <h1>%</h1>
+            </div>
+        </div>
+
+        <div class="desc">
+            <p>우울한 것으로 예측됩니다.</p>
+        </div>
+
+        <!-- TODO : 플롯 넣기 -->
+        <div class="result_plot">
+            <canvas id="myChart" width="400" height="400"></canvas>
+        </div>
+
+        <div class="result_probs">
+            <div id="q1_prob"></div>
+            <div id="q2_prob"></div>
+            <div id="q3_prob"></div>
+            <div id="q4_prob"></div>
+            <div id="q5_prob"></div>
+        </div>
+
+        <div class="start">
+            <a href="#" onclick="redirectToMain()" class="btn btn-rounded">메인으로</a>
+        </div>
+
+    </section>
+
+    <footer class="footer">
+        <p>개인정보 보호대책</p>
+        <p>NLP Team 12 project from Naver Boostcamp 6th</p>
+    </footer>
+
+    <script src="result.js"></script>
+
+</body>
+</html>
+
+<!-- 이렇게 뼈대는 완성되었다. 이걸 스타일링하는게 CSS의 목적 -->

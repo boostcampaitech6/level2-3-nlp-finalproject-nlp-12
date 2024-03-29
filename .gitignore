@@ -4,3 +4,4 @@ server/data/
 __pycache__/
 server/serving/
 test.*
+frontend/node_modules/

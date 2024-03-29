@@ -1,0 +1,228 @@
+:root {
+    --primary-color: #71a1e0;
+    --primary-color-hover:rgb(158, 191, 231);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    -webkit-font-smoothing: antialised;
+    background: #ffffff;
+    color: #999;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    line-height: 1.9;
+}
+
+a {
+    color : #999;
+    text-decoration: none;
+}
+
+
+/* 상단 */
+.top {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+
+.top .circle {
+    position: relative;
+    width: 50px; /* Set the width and height to the same value to make a perfect circle */
+    height: 50px;
+    background-color: var(--primary-color) ; /* Set the background color to visualize the circle */
+    border-radius: 50%; /* Use border-radius property with a value of 50% to make the element a circle */
+    margin: auto;
+}
+
+.top .link {
+    position: relative;
+    margin-top: 0.3rem;
+    margin-left: 2rem;
+    color: var(--primary-color);
+}
+
+.top .link2 {
+    position: relative;
+    margin-top: 0.3rem;
+    margin-right: 2rem;
+    color: #fff;
+}
+
+
+
+/* 중앙 */
+
+.mid {
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 11rem;
+}
+
+.mid .title {
+    font-weight: lighter;
+    font-size: 2rem;
+    color: #313131;
+}
+
+.mid .desc {
+    font-size: 1.2rem;
+    color: #313131;
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.mid .numbering {
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
+}
+
+.mid .question {
+    font-weight: 500;
+    font-size: 2.2rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.result_probs {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 3rem;
+    margin-top: 3rem;
+}
+
+.result_index {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.result_probs > div {
+    color: #fff;
+}
+
+.qall_result {
+    display: flex;
+}
+
+/* footer */
+
+.footer {
+    position: relative;
+    bottom: 0;
+    height: 2rem;
+    margin-top: 8rem;
+    margin-bottom: 3rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* select */
+
+input[type="number"], select {
+  padding: 10px; /* Add padding for spacing */
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 5px; /* Add rounded corners */
+  background-color: #f5f5f5; /* Add background color */
+  font-size: 1rem; /* Set font size */
+  color: #333; /* Set font color */
+  outline: none; /* Remove default focus outline */
+  margin-bottom: 1rem;
+}
+
+input[type="number"]:hover, select:hover {
+    border-color: #999; /* Change border color on hover */
+}
+
+.recordbtn {
+    color: #333; /* Set font color */
+    outline: none; /* Remove default focus outline */
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.auido_playback {
+    margin-bottom: 8rem;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    background : var(--primary-color);
+    color: #fff;
+    padding: 1rem 4rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    outline: none;
+    /* box-shadow: 0 1px 0 rgba(0,0,0, 0.45); */
+    border-radius: 2px;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.btn-rounded {
+    border-radius: 15px;
+}
+
+
+button {
+    padding: 10px 20px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 1rem; 
+    font-weight: 400; 
+    background-color: var(--primary-color); 
+    color: white; 
+    border: none; 
+    border-radius: 15px; /* Add rounded corners */
+    cursor: pointer; /* Add cursor pointer */
+  }
+  
+button:hover {
+    background-color: var(--primary-color-hover); /* Darker green background color */
+}
+
+button:disabled {
+    background-color: #cccccc; /* Light gray background color */
+    cursor: not-allowed; /* Change cursor to not allowed */
+}
+
+
+/* <uniquifier>: Use a unique and descriptive class name */
+/* <weight>: Use a value from 100 to 900 */
+
+/* .noto-sans kr-<uniquifier> {
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+} */
